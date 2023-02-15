@@ -62,7 +62,6 @@ export class ActivitiesComponent {
       const index = activities.findIndex((activity: any) => activity.activityId === activityId);
       if (index !== -1) {
         if (!newEndDate || !newEndDate) {
-          console.log("SIN DATES")
           this.activitiesByDate[date][index].startDate = null;
           this.activitiesByDate[date][index].endDate = null;
           // Lo agregamos a activitiesWoDate

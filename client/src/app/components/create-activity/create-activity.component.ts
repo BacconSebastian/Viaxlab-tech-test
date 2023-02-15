@@ -68,7 +68,6 @@ export class CreateActivityComponent {
 
   validateForm() {
     // Aca podrian ir mas validaciones
-    console.log(this.form.get("name")?.value)
     return this.form.get("name")?.value
   }
 }
