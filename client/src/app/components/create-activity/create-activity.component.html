@@ -1,0 +1,31 @@
+<div class="create-activity">
+  <div class="header">
+    <p><span>></span> Agregar nueva actividad</p>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+    <div class="inputs-container">
+      <div class="head-label w-100">
+        <label for="name">Nombre de la actividad</label>
+        <input type="text" name="name" formControlName="name" placeholder="Busca una actividad o crea una nueva...">
+      </div>
+      <div class="head-label">
+        <label for="start">Fecha de inicio</label>
+        <input type="datetime-local" name="start" formControlName="start">
+      </div>
+      <div class="head-label">
+        <label for="end">Fecha de finalización</label>
+        <input type="datetime-local" name="end" formControlName="end">
+      </div>
+    </div>
+    <div class="form-buttons">
+      <!-- Aca podriamos manejar errores en el formulario -->
+      <p *ngIf="error !== ''" class="error-text">Error: {{error}}</p>
+      <button (click)="handleCloseCreateActivity()">
+        Cancelar
+      </button>
+      <button type="submit">
+        Agregar
+      </button>
+    </div>
+  </form>
+</div>

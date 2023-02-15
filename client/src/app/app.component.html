@@ -1,0 +1,12 @@
+<div class="app">
+  <app-sidebar class="sidebar-container"></app-sidebar>
+  <div class="info-container">
+    <!-- Imaginemos que este componente debe ser reutilizable, por eso el itinerario se le pasa como variable -->
+    <app-header class="header-container" [itinerario]="itinerario"></app-header>
+    <app-activities class="activities-container" [activitiesByDate]="activitiesByDate"
+      [activitiesWoDate]="activitiesWoDate">
+    </app-activities>
+    <app-create-activity id="create-activity" class="create-activity-container disabled"
+      [activitiesByDate]="activitiesByDate" [activitiesWoDate]="activitiesWoDate"></app-create-activity>
+  </div>
+</div>

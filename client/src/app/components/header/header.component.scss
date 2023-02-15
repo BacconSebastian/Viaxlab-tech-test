@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgrey;
+  padding: 2rem;
+
+  h2 {
+    font-weight: 600;
+
+    span {
+      font-weight: 400;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3055AD;
+    color: #FAFAFA;
+    font-size: 1rem;
+    border: none;
+    border-radius: 2.5px;
+    padding: 0.5rem 1rem;
+    filter: drop-shadow(1px 1px 1px black);
+    cursor: pointer;
+
+    img {
+      width: 20px;
+      margin-right: 0.5rem;
+    }
+  }
+}

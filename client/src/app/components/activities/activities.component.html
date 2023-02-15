@@ -1,0 +1,72 @@
+<div class="activities">
+  <div class="activity-container" *ngIf="activitiesWoDate.length">
+    <p class="title">
+      <img src="../../../assets/images/fecha-icon.svg" alt="">
+      Sin fecha asignada <span>({{activitiesWoDate.length}})</span>
+    </p>
+    <div class="activity" *ngFor="let activity of activitiesWoDate">
+      <div class="img-info-container">
+        <img [src]="'../../../assets/images/'+ activity.type +'.svg'" alt="">
+        <div class="activity-info">
+          <p class="name">{{activity.title}}</p>
+          <form [formGroup]="form">
+            <input type="datetime-local" formControlName="newStartDate" *ngIf="isEditing(activity.activityId)">
+            <input type="datetime-local" formControlName="newEndDate" *ngIf="isEditing(activity.activityId)">
+          </form>
+        </div>
+      </div>
+      <div class="edit-container">
+        <button *ngIf="!isEditing(activity.activityId)" (click)="handleEditActivity(activity.activityId)">
+          <img src="../../../assets/images/edit-icon.svg" alt="">
+        </button>
+        <button *ngIf="isEditing(activity.activityId)" (click)="handleUpdateActivityWo(activity.activityId)">
+          <img src="../../../assets/images/edit-icon.svg" alt="">
+        </button>
+        <button *ngIf="!isEditing(activity.activityId)" (click)="handleDeleteActivity(activity.activityId)">
+          X
+        </button>
+        <button *ngIf="isEditing(activity.activityId)" (click)="cancelEdit()">
+          X
+        </button>
+      </div>
+    </div>
+    <button class="nueva-button" (click)="handleCreateActivity()">+ Nueva</button>
+  </div>
+  <ng-container *ngFor="let date of getDates(activitiesByDate)">
+    <div *ngIf="activitiesByDate[date].length" class="activity-container">
+      <p class="title">
+        {{date}} <span>({{activitiesByDate[date].length}})</span>
+      </p>
+      <div class="activity" *ngFor="let activity of activitiesByDate[date]">
+        <div class="img-info-container">
+          <img [src]="'../../../assets/images/'+ activity.type +'.svg'" alt="">
+          <div class="activity-info">
+            <p class="name">{{activity.title}}</p>
+            <p class="date" *ngIf="!isEditing(activity.activityId)">{{getHour(activity.startDate)}} -
+              {{getHour(activity.endDate)}}</p>
+            <form [formGroup]="form">
+              <input type="datetime-local" formControlName="newStartDate" *ngIf="isEditing(activity.activityId)">
+              <input type="datetime-local" formControlName="newEndDate" *ngIf="isEditing(activity.activityId)">
+            </form>
+            <p class="progress" *ngIf="activity.status === 'IN_PROGRESS'">En proceso</p>
+          </div>
+        </div>
+        <div class="edit-container">
+          <button *ngIf="!isEditing(activity.activityId)" (click)="handleEditActivity(activity.activityId)">
+            <img src="../../../assets/images/edit-icon.svg" alt="">
+          </button>
+          <button *ngIf="isEditing(activity.activityId)" (click)="handleUpdateActivity(activity.activityId)">
+            <img src="../../../assets/images/edit-icon.svg" alt="">
+          </button>
+          <button *ngIf="!isEditing(activity.activityId)" (click)="handleDeleteActivity(activity.activityId)">
+            X
+          </button>
+          <button *ngIf="isEditing(activity.activityId)" (click)="cancelEdit()">
+            X
+          </button>
+        </div>
+      </div>
+      <button class="nueva-button" (click)="handleCreateActivity()">+ Nueva</button>
+    </div>
+  </ng-container>
+</div>
